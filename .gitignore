@@ -3,6 +3,7 @@
 *.pyc
 ._*.m
 output/
+output-wavelet/
 data/
 eval/output/
 .ipynb_checkpoints/

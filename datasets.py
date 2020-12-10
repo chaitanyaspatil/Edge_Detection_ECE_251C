@@ -62,6 +62,6 @@ class BsdsDataset(data.Dataset):
 
         # Return image and (possible) edge.
         if self.split == 'train':
-            return image, edge, image_path, edge_path
+            return image, edge
         else:
             return image
