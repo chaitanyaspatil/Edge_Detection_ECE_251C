@@ -4,6 +4,7 @@
 ._*.m
 output/
 output-wavelet/
+output*
 data/
 eval/output/
 .ipynb_checkpoints/
