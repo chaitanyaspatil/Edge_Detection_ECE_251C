@@ -574,14 +574,14 @@ def train(train_loader_LL, train_loader_LH, train_loader_HL, train_loader_HH, ne
             preds_list_and_edges = preds_list + [edges]
             _, _, h, w = preds_list_and_edges[0].shape
             interm_images = torch.zeros((len(preds_list_and_edges), 1, h, w))
-            print(interm_images[i, 0, :, :].shape)
-            print(preds_list_and_edges[i][0, 0, :, :].shape)
+
             for i in range(len(preds_list_and_edges)):
                 # Only fetch the first image in the batch.
-                
+                print(interm_images[i, 0, :, :].shape)
+                print(preds_list_and_edges[i][0, 0, :, :].shape)
                 interm_images[i, 0, :, :] = preds_list_and_edges[i][0, 0, :, :]
-                
-                
+
+                    
                 
             # Save the images.
             torchvision.utils.save_image(interm_images, join(save_dir_LL, 'batch-{}-1st-image.png'.format(batch_index)))
