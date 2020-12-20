@@ -10,3 +10,7 @@ eval/output/
 .ipynb_checkpoints/
 __pycache__/
 hed-data.tar
+recombined_no_filter/
+recombined_no_filter_mat/
+recombined_yes_filter/
+recombined_yes_filter_mat/

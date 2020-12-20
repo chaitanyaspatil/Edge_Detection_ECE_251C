@@ -475,7 +475,7 @@ def train(train_loader_LL, train_loader_LH, train_loader_HL, train_loader_HH, ne
     #       It aims to have large training iteration number even if GPU memory is not enough. However, such trick
     #       can be used because batch normalization is not used in the network architecture.
     
-    
+    interm_faulty = 0
     counter = 0
     
     for i in tqdm(range(28800)):
@@ -537,11 +537,11 @@ def train(train_loader_LL, train_loader_LH, train_loader_HL, train_loader_HH, ne
         
         batch_loss.requires_grad = True
         
+        
         eqv_iter_loss = batch_loss / args.train_iter_size
 
-                
         
-        
+            
         # Generate the gradient and accumulate (using equivalent average loss).
         eqv_iter_loss.backward()
         
@@ -571,14 +571,22 @@ def train(train_loader_LL, train_loader_LH, train_loader_HL, train_loader_HH, ne
                    batch_loss_meter.val, batch_loss_meter.avg, lr_schd_LL.get_lr()))
             
             # Generate intermediate images.
+            # below operation concatenates but makes the last element list of all edges
             preds_list_and_edges = preds_list + [edges]
             _, _, h, w = preds_list_and_edges[0].shape
             interm_images = torch.zeros((len(preds_list_and_edges), 1, h, w))
 
             for i in range(len(preds_list_and_edges)):
                 # Only fetch the first image in the batch.
-                print(interm_images[i, 0, :, :].shape)
-                print(preds_list_and_edges[i][0, 0, :, :].shape)
+#                 print(interm_images[i, 0, :, :].shape)
+#                 print(preds_list_and_edges[i][0, 0, :, :].shape)
+                if(preds_list_and_edges[i][0, 0, :, :].shape!= interm_images[i, 0, :, :].shape):
+        
+                    interm_faulty = interm_faulty + 1
+                    print('umm...')
+                    continue
+#                     print('Do something. Preds_list is smaller. i is', i)
+                
                 interm_images[i, 0, :, :] = preds_list_and_edges[i][0, 0, :, :]
 
                     
@@ -586,6 +594,7 @@ def train(train_loader_LL, train_loader_LH, train_loader_HL, train_loader_HH, ne
             # Save the images.
             torchvision.utils.save_image(interm_images, join(save_dir_LL, 'batch-{}-1st-image.png'.format(batch_index)))
     # Return the epoch average batch_loss.
+    print(interm_faulty)
     return batch_loss_meter.avg
 
 def test(test_loader_LL, test_loader_LH, test_loader_HL, test_loader_HH,  net_LL, net_LH, net_HL, net_HH, save_dir_LL, save_dir_LH, save_dir_HL, save_dir_HH):
