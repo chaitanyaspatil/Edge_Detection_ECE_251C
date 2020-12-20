@@ -45,7 +45,7 @@ parser.add_argument('--weight_decay',     default=2e-4, type=float, metavar='F',
 parser.add_argument('--vgg16_caffe',      default='',                help='Resume VGG-16 Caffe parameters.')
 parser.add_argument('--checkpoint',       default='',                help='Resume the checkpoint.')
 parser.add_argument('--caffe_model',      default='',                help='Resume HED Caffe model.')
-parser.add_argument('--output',           default='./output',        help='Output folder.')
+parser.add_argument('--output',           default='./output_test',        help='Output folder.')
 parser.add_argument('--dataset',          default='./data/HED-BSDS', help='HED-BSDS dataset folder.')
 # 5. Others.
 parser.add_argument('--cpu',              default=False,             help='Enable CPU mode.', action='store_true')
