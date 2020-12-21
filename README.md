@@ -74,7 +74,7 @@ Go to `IDWT_of_LL_LH_HL_HH_bior.ipynb` and Restart and Run All.
 
    ```bash
    cd eval
-   (echo "data_dir = '../output_LL_haar/epoch-4-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
+   (echo "data_dir = '../recombined_haar'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
    ```
 The evaluation metrics should return something like: **ODS=0.718, OIS=0.733, AP=0.715**.
 
@@ -82,7 +82,7 @@ The evaluation metrics should return something like: **ODS=0.718, OIS=0.733, AP=
 
    ```bash
    cd eval
-   (echo "data_dir = '../output_LL_bior/epoch-4-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
+   (echo "data_dir = '../recombined_bior'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
    ```
 
 The evaluation metrics should return something like: **ODS=0.730 OIS=0.748 AP=0.738**.
