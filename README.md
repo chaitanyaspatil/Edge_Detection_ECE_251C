@@ -1,8 +1,10 @@
-## A PyTorch Reimplementation of HED
+## Integrating the Wavelet Transform into the Holistically-Nested Edge Detection (HED) Algorithm
 
 #### Introduction
 
-This is a PyTorch reimplementation of [Holistically-nested Edge Detection (HED)](https://arxiv.org/abs/1504.06375). The code is evaluated on Python 3.6 with PyTorch 1.0 (CUDA9, CUDNN7) and MATLAB R2018b.
+We combine the [holistically-nested edge detection (HED)](https://arxiv.org/abs/1504.06375) algorithm with the discrete wavelet transform in an attempt to improve the performance of the algorithm. We use an [existing PyTorch implementation](https://github.com/xwjabc/hed) of the official HED code (originally written in Caffe). We have used two different versions of the wavelet transform - Haar and the biorthogonal 4.4 wavelet. We will describe our various approaches to this problem and review the results for the two situations, along with possible explanations for our results. 
+
+The code is evaluated on Python 3.6 with PyTorch 1.0 (CUDA9, CUDNN7) and MATLAB R2018b.
 
 #### Instructions
 
@@ -67,4 +69,4 @@ Besides, based on my observation, the evaluated performance is somewhat stable a
 
 #### Acknowledgement
 
-This reimplementation is based on lots of prior works. Thanks to [Saining](https://github.com/s9xie/hed) for the original Caffe implementation. Thanks to [@meteorshowers](https://github.com/meteorshowers/hed-pytorch) for a PyTorch implementation where I adopt most of the code from. Thanks to [@jmbuena](https://github.com/jmbuena/toolbox.badacost.public) for a fixed version of Piotr's Toolbox. Thanks to [Berkeley Institute for Data Science](https://github.com/BIDS/BSDS500) which provides a mirror of BSDS500 dataset (the original link to the dataset seems broken).
+This project is based on a lot of previous work. Thank you to [@xjwabc](https://github.com/xwjabc/hed) for their reimplementation of the original HED algorithm in PyTorch that we used. This README.md also borrows from their instructions. Thank you also to [Saining Xie](https://github.com/s9xie/hed) for their paper that this project is based on and the original Caffe implementation. 
