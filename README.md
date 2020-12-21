@@ -13,16 +13,22 @@ The code is evaluated on Python 3.6 with PyTorch 1.0 (CUDA9, CUDNN7) and MATLAB 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/xwjabc/hed.git
+   git clone https://github.com/chaitanyaspatil/Edge_Detection_ECE_251C.git
    ```
 
 2. Download and extract the data:
 
    ```bash
-   cd hed
+   cd Edge_Detection_ECE_251C
    wget https://cseweb.ucsd.edu/~weijian/static/datasets/hed/hed-data.tar
    tar xvf ./hed-data.tar
    ```
+##### Generating the Haar and Bior wavelet-decomposed datasets
+
+1. Generate the Haar dataset:
+
+2. Generate the biorthogonal dataset:
+
 
 ##### Train and Evaluate
 
@@ -32,7 +38,7 @@ The code is evaluated on Python 3.6 with PyTorch 1.0 (CUDA9, CUDNN7) and MATLAB 
    python hed.py --vgg16_caffe ./data/5stage-vgg.py36pickle
    ```
 
-   The results are in `output` folder. In the default settings, the HED model is trained for 40 epochs, which takes ~27hrs with one NVIDIA Geforce GTX Titan X (Maxwell). 
+   By default, the results are in the `output` folder and the HED model is trained for 40 epochs. 
 
 2. Evaluate:
 
@@ -41,13 +47,13 @@ The code is evaluated on Python 3.6 with PyTorch 1.0 (CUDA9, CUDNN7) and MATLAB 
    (echo "data_dir = '../output/epoch-39-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
    ```
 
-   The evaluation process takes ~7hrs with Intel Core i7-5930K CPU @ 3.50GHz.
+   The evaluation process takes ~7hrs.
 
 Besides, based on my observation, the evaluated performance is somewhat stable after 5 epochs (5 epochs: **ODS=0.788 OIS=0.808** vs. 40 epochs: **ODS=0.787 OIS=0.807**).
 
 ##### Evaluate the Pre-trained Models
 
-1. Evaluate the my pre-trained version:
+1. Evaluate [@xjwabc](https://github.com/xwjabc/)'s pre-trained version:
 
    ```bash
    python hed.py --checkpoint ./data/hed_checkpoint.pt --output ./output-mypretrain --test
