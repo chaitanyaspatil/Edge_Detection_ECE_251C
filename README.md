@@ -74,7 +74,7 @@ Go to `IDWT_of_LL_LH_HL_HH_bior.ipynb` and Restart and Run All.
 
    ```bash
    cd eval
-   (echo "data_dir = '../output_LL_haar/epoch-39-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
+   (echo "data_dir = '../output_LL_haar/epoch-4-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
    ```
    
 
