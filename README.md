@@ -4,7 +4,7 @@
 
 We combine the [holistically-nested edge detection (HED)](https://arxiv.org/abs/1504.06375) algorithm with the discrete wavelet transform in an attempt to improve the performance of the algorithm. We use an [existing PyTorch implementation](https://github.com/xwjabc/hed) of the official HED code (originally written in Caffe). We have used two different versions of the wavelet transform - Haar and the biorthogonal 4.4 wavelet. We will describe our various approaches to this problem and review the results for the two situations, along with possible explanations for our results. 
 
-The code is evaluated on Python 3.6 with PyTorch 1.0 (CUDA9, CUDNN7) and MATLAB R2018b.
+Running this code requires access to Python 3.6, PyTorch 1.0 (CUDA9, CUDNN7) and MATLAB R2018b.
 
 #### Instructions
 
@@ -25,31 +25,70 @@ The code is evaluated on Python 3.6 with PyTorch 1.0 (CUDA9, CUDNN7) and MATLAB 
    ```
 ##### Generating the Haar and Bior wavelet-decomposed datasets
 
-1. Generate the Haar dataset:
+1. Generate the Haar dataset: 
+For training data: Go to `dataset_generator_final.ipynb` and click Restart and Run All.
+For test data: Go to `Test_dataset_generation_haar.ipynb` and click Restart and Run All.
 
 2. Generate the biorthogonal dataset:
+For training data: Go to `dataset_generator_final.ipynb` and click Restart and Run All.
+For test data: Go to `test_dataset_generator_bior_final.ipynb` and click Restart and Run All.
 
+##### Train, Recombine, and Evaluate
 
-##### Train and Evaluate
-
-1. Train:
+1. Train the 4 CNNs for the Haar wavelet decomposed images:
 
    ```bash
-   python hed.py --vgg16_caffe ./data/5stage-vgg.py36pickle
+   python hed_LL.py --vgg16_caffe ./data/5stage-vgg.py36pickle
+   python hed_LH.py --vgg16_caffe ./data/5stage-vgg.py36pickle
+   python hed_HL.py --vgg16_caffe ./data/5stage-vgg.py36pickle
+   python hed_HH.py --vgg16_caffe ./data/5stage-vgg.py36pickle
    ```
+   
+   By default, the results are in the `output/LL`, `output/LH`, `output/HL`, or `output/HH` folder and the models are trained for 40 epochs. 
+   
+2. Train the 4 CNNs for the bior(4, 4) wavelet decomposed images:
 
-   By default, the results are in the `output` folder and the HED model is trained for 40 epochs. 
+   ```bash
+   python HED_LL_bior.py --vgg16_caffe ./data/5stage-vgg.py36pickle
+   python HED_LH_bior.py --vgg16_caffe ./data/5stage-vgg.py36pickle
+   python HED_HL_bior.py --vgg16_caffe ./data/5stage-vgg.py36pickle
+   python HED_HH_bior.py --vgg16_caffe ./data/5stage-vgg.py36pickle
+   ```
+   
+   By default, the results are in the `output/HH_bior`, `output/HH_bior`, `output/HH_bior`, or `output/HH_bior` folder and the models are trained for 40 epochs. 
 
-2. Evaluate:
+3. Recombine the Haar output images:
 
    ```bash
    cd eval
    (echo "data_dir = '../output/epoch-39-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
    ```
 
-   The evaluation process takes ~7hrs.
+4. Recombine the bior(4, 4) output images:
 
-Besides, based on my observation, the evaluated performance is somewhat stable after 5 epochs (5 epochs: **ODS=0.788 OIS=0.808** vs. 40 epochs: **ODS=0.787 OIS=0.807**).
+   ```bash
+   cd eval
+   (echo "data_dir = '../output/epoch-39-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
+   ```
+
+5. Evaluate the Haar wavelet decomposed images:
+
+   ```bash
+   cd eval
+   (echo "data_dir = '../output/epoch-39-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
+   ```
+   
+
+6. Evaluate the bior(4, 4) wavelet decomposed images:
+
+   ```bash
+   cd eval
+   (echo "data_dir = '../output/epoch-39-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
+   ```
+
+   The evaluation process for each set of images takes ~7hrs.
+
+Based on the observations of @xjwabc, the evaluated performance for the networks is somewhat stable after 5 epochs.
 
 ##### Evaluate the Pre-trained Models
 
