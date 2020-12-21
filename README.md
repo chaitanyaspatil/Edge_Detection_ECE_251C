@@ -58,18 +58,10 @@ For test data: Go to `test_dataset_generator_bior_final.ipynb` and click Restart
    By default, the results are in the `output/HH_bior`, `output/HH_bior`, `output/HH_bior`, or `output/HH_bior` folder and the models are trained for 40 epochs. 
 
 3. Recombine the Haar output images:
-
-   ```bash
-   cd eval
-   (echo "data_dir = '../output/epoch-39-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
-   ```
+Go to `IDWT_of_LL_LH_HL_HH.ipynb` and Restart and Run All
 
 4. Recombine the bior(4, 4) output images:
-
-   ```bash
-   cd eval
-   (echo "data_dir = '../output/epoch-39-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
-   ```
+Go to `IDWT_of_LL_LH_HL_HH.ipynb` and Restart and Run All
 
 5. Evaluate the Haar wavelet decomposed images:
 
