@@ -28,11 +28,13 @@ Running this code requires access to Python 3.6, PyTorch 1.0 (CUDA9, CUDNN7) and
 1. Generate the Haar dataset: 
 
 For training data: Go to `dataset_generator_final.ipynb` and click Restart and Run All.
+
 For test data: Go to `Test_dataset_generation_haar.ipynb` and click Restart and Run All.
 
 2. Generate the biorthogonal dataset:
 
 For training data: Go to `dataset_generator_final.ipynb` and click Restart and Run All.
+
 For test data: Go to `test_dataset_generator_bior_final.ipynb` and click Restart and Run All.
 
 ##### Train, Recombine, and Evaluate
@@ -51,16 +53,21 @@ For test data: Go to `test_dataset_generator_bior_final.ipynb` and click Restart
 2. Train the 4 CNNs for the bior(4, 4) wavelet decomposed images:
 
 For the LL network: Go to `bior_debug.ipynb` and click Restart and Run All.
+
 For the LH network: Go to `bior_debug_LH.ipynb` and click Restart and Run All.
+
 For the HL network: Go to `bior_debug_HL.ipynb` and click Restart and Run All.
+
 For the HH network: Go to `bior_debug_HH.ipynb` and click Restart and Run All.
    
    By default, the results are in the `output/HH_bior`, `output/HH_bior`, `output/HH_bior`, or `output/HH_bior` folder and the models are trained for 40 epochs. 
 
 3. Recombine the Haar output images:
+
 Go to `IDWT_of_LL_LH_HL_HH.ipynb` and Restart and Run All
 
 4. Recombine the bior(4, 4) output images:
+
 Go to `IDWT_of_LL_LH_HL_HH.ipynb` and Restart and Run All
 
 5. Evaluate the Haar wavelet decomposed images:
