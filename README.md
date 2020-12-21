@@ -113,4 +113,4 @@ Based on the observations of @xjwabc, the evaluated performance for the networks
 
 #### Acknowledgement
 
-This project is based on a lot of previous work. Thank you to [@xjwabc](https://github.com/xwjabc/hed) for their reimplementation of the original HED algorithm in PyTorch that we used. This README.md also borrows from their instructions. Thank you also to [Saining Xie](https://github.com/s9xie/hed) for their paper that this project is based on and the original Caffe implementation. 
+This project is based on a lot of previous work. Thank you to [@xjwabc](https://github.com/xwjabc/hed) for their reimplementation of the original HED algorithm in PyTorch that we used. This README.md also borrows from their instructions. Thank you to [Saining Xie](https://github.com/s9xie/hed) for the original Caffe implementation of their HED algorithm. 
