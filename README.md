@@ -76,7 +76,7 @@ Go to `IDWT_of_LL_LH_HL_HH_bior.ipynb` and Restart and Run All.
    cd eval
    (echo "data_dir = '../output_LL_haar/epoch-4-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
    ```
-   
+The evaluation metrics should return something like: **ODS=0.718, OIS=0.733, AP=0.715**.
 
 6. Evaluate the bior(4, 4) wavelet decomposed images:
 
@@ -85,9 +85,9 @@ Go to `IDWT_of_LL_LH_HL_HH_bior.ipynb` and Restart and Run All.
    (echo "data_dir = '../output_LL_bior/epoch-4-test'"; cat eval_edge.m)|matlab -nodisplay -nodesktop -nosplash
    ```
 
-   The evaluation process for each set of images takes ~7hrs.
+The evaluation metrics should return something like: **ODS=0.730 OIS=0.748 AP=0.738**.
 
-Based on the observations of @xjwabc, the evaluated performance for the networks is somewhat stable after 5 epochs.
+The evaluation process for each set of images takes ~7hrs. Based on the observations of @xjwabc, the evaluated performance for the networks is somewhat stable after 5 epochs.
 
 ##### Evaluate the Pre-trained Models
 
